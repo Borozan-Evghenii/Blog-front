@@ -18,7 +18,6 @@ export const useDevice = () => {
     const isMobile = width <= 580;
     const isTablet = width <= 1024;
     const isDesktop = width > 1024;
-    console.log(window.innerWidth   )
 
     return {isMobile, isTablet, isDesktop}
 

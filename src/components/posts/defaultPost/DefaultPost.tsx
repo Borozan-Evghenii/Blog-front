@@ -19,7 +19,16 @@ const DefaultPost:FC<DefaultPostProps> = ({item}) => {
                     </AuthorInfo>
                 </AuthorContainer>
                 <PostTitle to={''}>5 Lessons on Career Growth From a Google Exec</PostTitle>
-                <PostDescription>There is no easy path. The elevator is broken and you need to take the stairs and climb fast.</PostDescription>
+                <PostDescription>
+                    There is no easy path. The elevator is broken and you need to take the stairs and climb fast.
+                    The elevator is broken and you need to take the stairs and climb fast.
+                    The elevator is broken and you need to take the stairs and climb fast.T
+                    he elevator is broken and you need to take the stairs and climb fast.
+                </PostDescription>
+                <PostFooter>
+                    <Date >Sep 27</Date>
+                    <ToRead>3 min read</ToRead>
+                </PostFooter>
             </PostContainer>
             <PostImage src={postImage}  />
         </Post>
@@ -81,7 +90,24 @@ const PostTitle = styled(Link)`
 
 const PostDescription = styled.div`
   color: ${props => props.theme.colors.secondary};
+  line-clamp: 2;
+  overflow: hidden;
+  &:after{
+    content: '..';
+  }
   @media(max-width: 731px){
     display: none;
   }
+`
+const PostFooter = styled.div`
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+`
+const Date = styled.p`
+  
+`
+
+const ToRead = styled.p`
+
 `

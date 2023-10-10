@@ -11,8 +11,8 @@ const DiscoverPosts:FC = () => {
                 <Layout>
                     <ListSection>
                         <List
-                            items={['post1', 'post2', 'post3',  'post3',  'post3', 'post3']}
-                            element={(item) => <DefaultPost item={item}/> }
+                            items={['post1', 'post2', 'post3',  'post4',  'post5', 'post6']}
+                            element={(item) => <DefaultPost key={item} item={item}/> }
                         />
                     </ListSection>
                     <Aside>

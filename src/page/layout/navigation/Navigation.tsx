@@ -21,8 +21,6 @@ const Navigation:FC = () => {
             setParams(createSearchParams({q: searchInput.value}))
         }
     }
-
-    console.log(isMobile)
     return (
         <Header>
             {isMobile && <MobileTopBar/>}
