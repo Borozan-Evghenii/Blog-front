@@ -1,14 +1,23 @@
 import {FC} from 'react';
 import styled from "styled-components";
 import image from '../../../../public/vite.svg'
-import postImage from '../../../../public/image.jpeg'
 import {Link} from "react-router-dom";
+import {postType} from "../../../globalTypes/globalTypes.ts";
+import {Category} from "../../category/Category.ts";
+
 
 interface DefaultPostProps {
-    item?: string
+    item?: postType
 }
 const DefaultPost:FC<DefaultPostProps> = ({item}) => {
-    console.log(item)
+    const description = item
+        ? item?.attributes?.description.length >= 124
+            ? item?.attributes.description.substring(0, 124)
+            : item?.attributes.description : ''
+
+    //const publishedData = DateTime.now()
+    console.log(item?.attributes.publishedAt)
+
     return (
         <Post>
             <PostContainer>
@@ -18,19 +27,29 @@ const DefaultPost:FC<DefaultPostProps> = ({item}) => {
                         <AuthorName to={''}>Daniel Rizea</AuthorName>
                     </AuthorInfo>
                 </AuthorContainer>
-                <PostTitle to={''}>5 Lessons on Career Growth From a Google Exec</PostTitle>
+                <PostTitle to={''}>{item?.attributes.title}</PostTitle>
                 <PostDescription>
-                    There is no easy path. The elevator is broken and you need to take the stairs and climb fast.
-                    The elevator is broken and you need to take the stairs and climb fast.
-                    The elevator is broken and you need to take the stairs and climb fast.T
-                    he elevator is broken and you need to take the stairs and climb fast.
+                    {description}
                 </PostDescription>
                 <PostFooter>
-                    <Date >Sep 27</Date>
-                    <ToRead>3 min read</ToRead>
+                    <Date >{item?.attributes.publishedAt}</Date>
+                    <ToRead>{item?.attributes.to_read} min read</ToRead>
+                    {
+                        item?.attributes.categories.data.map(e =>
+                            <Category
+                                to={''}
+                                key={e.id}
+                                $postCategory>
+                                {e.attributes.category_name}
+                            </Category>
+                        )
+                    }
                 </PostFooter>
             </PostContainer>
-            <PostImage src={postImage}  />
+            <PostImage
+                src={`http://localhost:1337${item?.attributes.image.data.attributes.url}`}
+                alt={item?.attributes.image.data.attributes.alternativeText}
+            />
         </Post>
     );
 };
@@ -103,6 +122,8 @@ const PostFooter = styled.div`
   display: flex;
   gap: 10px;
   font-size: 13px;
+  align-items: center;
+  flex-wrap: wrap;
 `
 const Date = styled.p`
   
