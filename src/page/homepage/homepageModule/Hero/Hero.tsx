@@ -4,6 +4,7 @@ import styled from "styled-components";
 import {DefaultContainer} from "../../../../styles/GlobalComponents.ts";
 
 const Hero:FC = () => {
+
     return (
         <Section>
             <DefaultContainer>

@@ -7,6 +7,7 @@ import MobileTopBar from "./modules/topBarr/MobileTopBar.tsx";
 import {useDevice} from "../../../hooks/useDevice/useDevice.ts";
 import {BiSearch} from "react-icons/bi";
 import styled from "styled-components";
+import LangSwitcher from "./modules/langSwitcher/LangSwitcher.tsx";
 
 const Navigation:FC = () => {
     const location = useLocation()
@@ -39,6 +40,7 @@ const Navigation:FC = () => {
                 </Side>
                 <Side >
                     <Nav >
+                        <LangSwitcher/>
                         {
                             isMobile
                                 ? <Button
@@ -46,6 +48,7 @@ const Navigation:FC = () => {
                                     variant={ButtonVariants.icon}
                                     ><BiSearch/></Button>
                                 : <>
+
                                     <Button
                                         to={'auth/register'}
                                         variant={ButtonVariants.fillAccent}

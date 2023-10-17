@@ -3,16 +3,23 @@ import {DefaultContainer, Section} from "../../../../styles/GlobalComponents.ts"
 import styled from "styled-components";
 import List from "../../../../components/list/List.tsx";
 import DefaultPost from "../../../../components/posts/defaultPost/DefaultPost.tsx";
+import {useGetPostsQuery} from "../../../../store/api/postsApi.ts";
+import {useAppSelector} from "../../../../store/hooks.ts";
+import {postType} from "../../../../globalTypes/globalTypes.ts";
+
 
 const DiscoverPosts:FC = () => {
+    const lang = useAppSelector(store => store.language.value)
+    const {data} = useGetPostsQuery(lang)
+    console.log(data)
     return (
         <Section>
             <DefaultContainer>
                 <Layout>
                     <ListSection>
                         <List
-                            items={['post1', 'post2', 'post3',  'post4',  'post5', 'post6']}
-                            element={(item) => <DefaultPost key={item} item={item}/> }
+                            items={data?.data}
+                            element={(item:postType) => <DefaultPost key={item.id} item={item}/> }
                         />
                     </ListSection>
                     <Aside>
