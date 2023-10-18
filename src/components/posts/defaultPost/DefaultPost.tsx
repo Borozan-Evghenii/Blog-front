@@ -15,8 +15,6 @@ const DefaultPost:FC<DefaultPostProps> = ({item}) => {
             ? item?.attributes.description.substring(0, 124)
             : item?.attributes.description : ''
 
-    //const publishedData = DateTime.now()
-    console.log(item?.attributes.publishedAt)
 
     return (
         <Post>
