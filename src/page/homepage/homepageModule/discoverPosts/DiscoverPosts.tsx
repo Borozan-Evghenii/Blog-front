@@ -11,7 +11,6 @@ import {postType} from "../../../../globalTypes/globalTypes.ts";
 const DiscoverPosts:FC = () => {
     const lang = useAppSelector(store => store.language.value)
     const {data} = useGetPostsQuery(lang)
-    console.log(data)
     return (
         <Section>
             <DefaultContainer>
